@@ -2,8 +2,9 @@
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
-
-use function Laravel\Prompts\alert;
+use League\CommonMark\Extension\FrontMatter\Data\LibYamlFrontMatterParser;
+use Symfony\Component\Routing\Loader\YamlFileLoader;
+use Symfony\Component\Yaml\Yaml;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,15 +21,17 @@ use function Laravel\Prompts\alert;
 // json
 // return ['foo' => 'bar'];
 
+// Route::get('/', function () {
+//     return Post::find('my-last-post');
+// });
+
 Route::get('/', function () {
-    return Post::find('my-last-post');
+    return view('posts', [
+        'posts' => Post::all()
+    ]);
 });
 
-Route::get('/posts', function () {
-    return view('posts');
-});
-
-Route::get('/post/{post}', function ($slug) {
+Route::get('/{post}', function ($slug) {
     // Find a post by its slug and pass it to a view called "post"
 
     return view('post', [
