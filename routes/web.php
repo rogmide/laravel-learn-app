@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 use function Laravel\Prompts\alert;
@@ -20,24 +21,17 @@ use function Laravel\Prompts\alert;
 // return ['foo' => 'bar'];
 
 Route::get('/', function () {
-    return view('welcome');
+    return Post::find('my-last-post');
 });
 
 Route::get('/posts', function () {
     return view('posts');
 });
 
-Route::get('/post/{post}', function ($slug) {;
+Route::get('/post/{post}', function ($slug) {
+    // Find a post by its slug and pass it to a view called "post"
 
-    if (!file_exists($path = __DIR__ . "/../resources/posts/{$slug}.html")) {
-        return redirect('/posts');
-    }
-
-    // caching stuff see the number 5 represent the time that will be in cache
-    cache()->remember("post.{slug}", 5, fn () => file_get_contents($path));
-
-    $post = file_get_contents($path);
-
-    return view('post', ['post' => $post]);
-    // constrains
+    return view('post', [
+        'post' => Post::find($slug)
+    ]);
 })->where('post', '[A-z_\-]+');
