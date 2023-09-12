@@ -13,6 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// the nagetator read the next line is where Json
+// json
+// return ['foo' => 'bar'];
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/posts', function () {
+    return view('posts');
+});
+
+Route::get('/post', function () {
+    return view('post');
 });
