@@ -2,9 +2,8 @@
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
-use League\CommonMark\Extension\FrontMatter\Data\LibYamlFrontMatterParser;
-use Symfony\Component\Routing\Loader\YamlFileLoader;
-use Symfony\Component\Yaml\Yaml;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
+use Illuminate\Support\Facades\File;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +25,23 @@ use Symfony\Component\Yaml\Yaml;
 // });
 
 Route::get('/', function () {
+    $files = File::files(resource_path("posts"));
+
+
+    foreach ($files as $file) {
+        # code...
+        $document = YamlFrontMatter::parseFile($file);
+
+        $posts[] = new Post(
+            $document->title,
+            $document->excerpt,
+            $document->date,
+            $document->body()
+        );
+    }
+
+    ddd($posts);
+
     return view('posts', [
         'posts' => Post::all()
     ]);
