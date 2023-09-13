@@ -36,14 +36,15 @@ Route::get('/', function () {
             $document->title,
             $document->excerpt,
             $document->date,
-            $document->body()
+            $document->body(),
+            $document->slug
         );
     }
 
-    ddd($posts);
+    // ddd($posts);
 
     return view('posts', [
-        'posts' => Post::all()
+        'posts' => $posts
     ]);
 });
 
