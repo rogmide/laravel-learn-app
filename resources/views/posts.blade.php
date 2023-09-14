@@ -7,7 +7,7 @@
             </a>
         </h2>
         <div>
-            {{ $post->excerpt }}
+            {!! $post->excerpt !!}
         </div>
     @endforeach
 
