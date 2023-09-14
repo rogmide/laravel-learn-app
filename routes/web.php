@@ -33,6 +33,6 @@ Route::get('/{post}', function ($slug) {
     // Find a post by its slug and pass it to a view called "post"
 
     return view('post', [
-        'post' => Post::find($slug)
+        'post' => Post::findorfail($slug)
     ]);
-})->where('post', '[A-z_\-]+');
+});
