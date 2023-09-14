@@ -1,30 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends ('layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@section('banner')
+    <h1>My Blog</h1>
+@endsection
 
-    <!-- linking styles and js files that should be place in public files -->
-    <link rel="stylesheet" href="/app.css">
-    <!-- <script src="/app.js"></script> -->
+@section('content')
+    @if (false)
+        <h2>Something</h2>
+    @endif
 
-    <title>Posts</title>
-</head>
-
-<body>
-
-    <?php foreach ($posts as $post) : ?>
-        <h1>
-            <a href="/<?= $post->slug; ?>">
-                <?= $post->title; ?>
+    @foreach ($posts as $post)
+        <h2>
+            <a href="/{{ $post->slug }}">
+                {{ $post->title }}
             </a>
-        </h1>
+        </h2>
         <div>
-            <?= $post->excerpt ?>
+            {{ $post->excerpt }}
         </div>
-    <?php endforeach ?>
-
-</body>
-
-</html>
+    @endforeach
+@endsection
