@@ -29,10 +29,10 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/{post}', function ($slug) {
+Route::get('/{post}', function ($id) {
     // Find a post by its slug and pass it to a view called "post"
 
     return view('post', [
-        'post' => Post::findorfail($slug)
+        'post' => Post::findorfail($id)
     ]);
 });
