@@ -14,5 +14,5 @@ class Post extends Model
 
     // i dont have to use this i will not allow mass assigment
     // turn off mass asigment
-    protected $guarded = ['id'];
+    protected $guarded = ['slug'];
 }
