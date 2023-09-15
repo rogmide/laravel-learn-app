@@ -11,7 +11,8 @@
         </div>
     </article>
 
-    <a href="/">Go Back</a>
-
+    <div class="move-down">
+        <a href="/">Go Back</a>
+    </div>
 
 </x-layout>
