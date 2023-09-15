@@ -15,4 +15,11 @@ class Post extends Model
     // i dont have to use this i will not allow mass assigment
     // turn off mass asigment
     protected $guarded = ['slug'];
+
+    // relationship !!! Interensting
+    public function category()
+    {
+        // hasOne, HasMany, belongsTO, belongsToMany
+        return $this->belongsTo(Category::class);
+    }
 }
