@@ -7,7 +7,8 @@
         </h2>
 
         <p>
-            <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}
+            By <a href="#"> Roger Delgado</a> in <a
+                href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}
             </a>
         </p>
 
