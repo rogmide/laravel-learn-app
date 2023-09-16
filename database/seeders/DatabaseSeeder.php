@@ -25,15 +25,18 @@ class DatabaseSeeder extends Seeder
 
         // you can override fake properties by passing the 
         // properties yourself
-        $user = User::factory()->create([
-            'name' => 'Roger Delgado'
-        ]);
+        // $user = User::factory()->create([
+        //     'name' => 'Roger Delgado'
+        // ]);
+
+        User::factory(3)->create();
+        Post::factory(5)->create();
 
         // you can override fake properties by passing the 
         // properties yourself
-        Post::factory(5)->create([
-            'user_id' => $user->id
-        ]);
+        // Post::factory(5)->create([
+        //     'user_id' => $user->id
+        // ]);
 
         // // THIS IS ONE WAY TO DO IT 
         // // THE HARD WAY TO DO IT
