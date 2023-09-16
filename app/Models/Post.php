@@ -14,7 +14,8 @@ class Post extends Model
 
     // i dont have to use this i will not allow mass assigment
     // turn off mass asigment
-    protected $guarded = ['slug'];
+    // protected $guarded = ['slug'];
+    protected $guarded = [];
 
     // relationship !!! Interensting
     public function category()
