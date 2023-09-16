@@ -56,8 +56,8 @@ class DatabaseSeeder extends Seeder
             'category_id' => $family->id,
             'title' => 'My Family Post',
             'slug' => 'my-family-post',
-            'excerpt' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In cursus turpis massa tincidunt dui ut ornare lectus. Consectetur a erat nam at. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet. Diam sit amet nisl suscipit adipiscing bibendum est.'
+            'excerpt' => '<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>',
+            'body' => '<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In cursus turpis massa tincidunt dui ut ornare lectus. Consectetur a erat nam at. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet. Diam sit amet nisl suscipit adipiscing bibendum est. </p>'
         ]);
 
         Post::create([
@@ -65,8 +65,8 @@ class DatabaseSeeder extends Seeder
             'category_id' => $work->id,
             'title' => 'My Work Post',
             'slug' => 'my-work-post',
-            'excerpt' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In cursus turpis massa tincidunt dui ut ornare lectus. Consectetur a erat nam at. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet. Diam sit amet nisl suscipit adipiscing bibendum est.'
+            'excerpt' => '<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>',
+            'body' => '<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In cursus turpis massa tincidunt dui ut ornare lectus. Consectetur a erat nam at. Consectetur adipiscing elit duis tristique sollicitudin nibh sit amet. Diam sit amet nisl suscipit adipiscing bibendum est. </p>'
         ]);
 
 
