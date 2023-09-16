@@ -17,6 +17,11 @@ class Post extends Model
     // protected $guarded = ['slug'];
     protected $guarded = [];
 
+    // if we declare this property we are saying to the DB
+    // every time that you bring a Post bring me with all
+    // category and the authos included
+    // protected $with = ['category', 'author'];
+
     // relationship !!! Interensting
     public function category()
     {
@@ -24,9 +29,14 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function user()
+    // The name of the method has to be equal to 
+    // the field in the database
+    // Elequent read user_id as the relationship
+    // but we can specifie the forent key as 
+    // sec argument to use differents names
+    public function author()
     {
         // hasOne, HasMany, belongsTO, belongsToMany
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
