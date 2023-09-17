@@ -28,7 +28,7 @@
 
             <div class="text-sm mt-2">
                 <p>
-                    {{ $post->body }}
+                    {{ $post->excerpt }}
                 </p>
             </div>
 
