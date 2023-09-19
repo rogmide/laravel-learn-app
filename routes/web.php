@@ -29,7 +29,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('posts', [
         // this is basaclly a query to DB Order By last, give me with the caregory and the authors
-        'posts' => Post::latest()->with('category', 'author')->get()
+        'posts' => Post::latest()->with('category', 'author')->get(),
+        'categories' => Category::all()
     ]);
 });
 
@@ -42,7 +43,9 @@ Route::get('/{post:slug}', function (Post $post) {
 
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', [
-        'posts' => $category->posts->load(['category', 'author'])
+        'posts' => $category->posts->load(['category', 'author']),
+        'currentCategory' => $category,
+        'categories' => Category::all()
     ]);
 });
 
@@ -52,6 +55,7 @@ Route::get('/authors/{author:username}', function (User $author) {
     return view('posts', [
         // there is another way to do it if we create a property in the 
         // class
-        'posts' => $author->posts->load(['category', 'author'])
+        'posts' => $author->posts->load(['category', 'author']),
+        'categories' => Category::all()
     ]);
 });
