@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
@@ -26,33 +27,11 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Homepage  
-Route::get('/', function () {
-
-    $posts = Post::latest();
-
-    if (request('search')) {
-        # code...
-        // Works like Standard Sql Syntaxs
-        $posts
-            ->where('title', 'like', '%' . request('search') . '%')
-            ->orWhere('body', 'like', '%' . request('search') . '%');
-    }
-
-    return view('posts', [
-        // this is basaclly a query to DB Order By last, give me with the caregory and the authors
-        'posts' => $posts->get(),
-        // 'posts' => Post::latest()->with('category', 'author')->get(),
-        'categories' => Category::all()
-    ]);
-    // Naming the Routes
-})->name('home');
+// [PostController::class, 'index'] Calling a method from a controller class
+Route::get('/', [PostController::class, 'index'])->name('home');
 
 // Posting Routes
-Route::get('/{post:slug}', function (Post $post) {
-    return view('post', [
-        'post' => $post
-    ]);
-});
+Route::get('/{post:slug}', [PostController::class, '_show']);
 
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', [
