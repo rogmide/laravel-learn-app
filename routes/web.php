@@ -32,7 +32,8 @@ Route::get('/', function () {
         'posts' => Post::latest()->with('category', 'author')->get(),
         'categories' => Category::all()
     ]);
-});
+    // Naming the Routes
+})->name('home');
 
 // Posting Routes
 Route::get('/{post:slug}', function (Post $post) {
@@ -47,7 +48,8 @@ Route::get('/categories/{category:slug}', function (Category $category) {
         'currentCategory' => $category,
         'categories' => Category::all()
     ]);
-});
+    // Naming the Routes
+})->name('category');
 
 
 // {author:username} username reflex the key that we are usgin the slug
