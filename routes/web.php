@@ -27,9 +27,21 @@ use Illuminate\Support\Facades\Route;
 
 // Homepage  
 Route::get('/', function () {
+
+    $posts = Post::latest();
+
+    if (request('search')) {
+        # code...
+        // Works like Standard Sql Syntaxs
+        $posts
+            ->where('title', 'like', '%' . request('search') . '%')
+            ->orWhere('body', 'like', '%' . request('search') . '%');
+    }
+
     return view('posts', [
         // this is basaclly a query to DB Order By last, give me with the caregory and the authors
-        'posts' => Post::latest()->with('category', 'author')->get(),
+        'posts' => $posts->get(),
+        // 'posts' => Post::latest()->with('category', 'author')->get(),
         'categories' => Category::all()
     ]);
     // Naming the Routes
