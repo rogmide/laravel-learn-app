@@ -38,6 +38,6 @@ class PostController extends Controller
                 ->orWhere('body', 'like', '%' . request('search') . '%');
         }
 
-        return $posts->get();
+        return $posts->paginate(6);
     }
 }
