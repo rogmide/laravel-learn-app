@@ -35,7 +35,12 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('/{post:slug}', [PostController::class, '_show']);
 
 
+// ############ REGISTER START
+
 Route::get('/reg/register', [RegisterController::class, 'create']);
+Route::post('/reg/register', [RegisterController::class, 'store']);
+
+// ############ REGISTER END
 
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', [
