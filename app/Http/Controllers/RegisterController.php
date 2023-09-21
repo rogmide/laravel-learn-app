@@ -17,11 +17,13 @@ class RegisterController extends Controller
         // Validadion Handeling
 
         $attributes = request()->validate([
-            'name' => 'required|max:255',
-            'username' => 'required|max:255|min:3',
-            'email' => 'required|email|max:255',
+            'name' => 'required|max:255|min:5',
+            'username' => 'required|max:255|min:3|unique:users,username',
+            'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|min:7|max:255'
         ]);
+
+        // Encrypting Password
 
         User::create($attributes);
 
