@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
@@ -32,6 +33,9 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 
 // Posting Routes
 Route::get('/{post:slug}', [PostController::class, '_show']);
+
+
+Route::get('/reg/register', [RegisterController::class, 'create']);
 
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', [
