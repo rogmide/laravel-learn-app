@@ -15,8 +15,18 @@
                 </a>
             </div>
 
-            <div class="mt-8 md:mt-0">
-                <a href="/" class="text-xs font-bold uppercase">Home Page</a>
+            <div class="mt-8 md:mt-0 flex items-center">
+                {{-- Cheking if the User is log in --}}
+                @auth
+                    <a href="/home" class="text-xs font-bold uppercase ">Welcome {{ auth()->user()->name }}</a>
+                    <form method="POST" action="logout" class="text-xs ml-10 font-semibold text-blue-500">
+                        @csrf
+
+                        <button type="submit">Log Out</button>
+                    </form>
+                @else
+                    <a href="/reg/register" class="text-xs font-bold uppercase">Register</a>
+                @endauth
 
                 <a href="#"
                     class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">

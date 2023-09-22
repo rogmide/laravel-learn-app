@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
@@ -30,6 +31,7 @@ use Illuminate\Support\Facades\Route;
 // Homepage  
 // [PostController::class, 'index'] Calling a method from a controller class
 Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('/home', [PostController::class, 'index']);
 
 // Posting Routes
 Route::get('/{post:slug}', [PostController::class, '_show']);
@@ -37,10 +39,12 @@ Route::get('/{post:slug}', [PostController::class, '_show']);
 
 // ############ REGISTER START
 
-Route::get('/reg/register', [RegisterController::class, 'create']);
-Route::post('/reg/register', [RegisterController::class, 'store']);
+Route::get('/reg/register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('/reg/register', [RegisterController::class, 'store'])->middleware('guest');
 
 // ############ REGISTER END
+
+Route::post('/logout', [SessionsController::class, 'destroy']);
 
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', [

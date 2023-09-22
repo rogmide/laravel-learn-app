@@ -25,7 +25,9 @@ class RegisterController extends Controller
 
         // Encrypting Password
 
-        User::create($attributes);
+        $user = User::create($attributes);
+
+        auth()->login($user);
 
         // This is a way to flash a piece of data to the session
         // session()->flash('success', 'Your account has been created.');
