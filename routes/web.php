@@ -39,12 +39,19 @@ Route::get('/{post:slug}', [PostController::class, '_show']);
 
 // ############ REGISTER START
 
-Route::get('/reg/register', [RegisterController::class, 'create'])->middleware('guest');
-Route::post('/reg/register', [RegisterController::class, 'store'])->middleware('guest');
+// MIDDLEWARE VERSION NOT WORKING FOR SOME REASON
+// Route::get('/reg/register', [RegisterController::class, 'create'])->middleware('guest');
+// Route::post('/reg/register', [RegisterController::class, 'store'])->middleware('guest');
+Route::get('/reg/register', [RegisterController::class, 'create']);
+Route::post('/reg/register', [RegisterController::class, 'store']);
 
 // ############ REGISTER END
 
-Route::post('/logout', [SessionsController::class, 'destroy']);
+// MIDDLEWARE VERSION NOT WORKING FOR SOME REASON
+// Route::post('/reg/logout', [SessionsController::class, 'destroy'])->middleware('guest');
+Route::post('/reg/logout', [SessionsController::class, 'destroy']);
+Route::get('/reg/login', [SessionsController::class, 'create']);
+Route::post('/reg/login', [SessionsController::class, 'store']);
 
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', [

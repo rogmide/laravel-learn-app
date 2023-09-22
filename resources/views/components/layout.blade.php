@@ -19,13 +19,14 @@
                 {{-- Cheking if the User is log in --}}
                 @auth
                     <a href="/home" class="text-xs font-bold uppercase ">Welcome {{ auth()->user()->name }}</a>
-                    <form method="POST" action="logout" class="text-xs ml-10 font-semibold text-blue-500">
+                    <form method="POST" action="/reg/logout" class="text-xs ml-10 font-semibold text-blue-500">
                         @csrf
 
                         <button type="submit">Log Out</button>
                     </form>
                 @else
-                    <a href="/reg/register" class="text-xs font-bold uppercase">Register</a>
+                    <a href="/reg/register" class="text-xs font-bold uppercase mr-3">Register</a>
+                    <a href="/reg/login" class="text-xs font-bold uppercase mr-5">Login</a>
                 @endauth
 
                 <a href="#"
