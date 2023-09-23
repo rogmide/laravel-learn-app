@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->text('body');
             $table->timestamps();
+
+            // Short version of line 24 to 27
+            $table->foreignId('post_id')->constrained()->cascadeOnDelete();
+
+            // This is one way to do foreign ID cascade deletion
+            // or foreign id in general
+            // $table->unsignedBigInteger('post_id');
+            // $table->foreign('post_id')->references('id')->on('posts')->cascadeOnDelete();
         });
     }
 
