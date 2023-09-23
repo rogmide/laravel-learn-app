@@ -10,6 +10,7 @@ class PostCommentsController extends Controller
     //
     public function store(Post $post)
     {
+
         // validation
         request()->validate([
             'body' => 'required'
