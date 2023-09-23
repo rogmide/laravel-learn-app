@@ -8,6 +8,11 @@ use App\Models\Category;
 
 class PostController extends Controller
 {
+
+
+    // COMMUN ACTIONS 
+    // index, _show, create, store, edit, update, destroy
+
     public function index()
     {
 

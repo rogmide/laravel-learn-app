@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\PostCommentsController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
@@ -32,6 +33,9 @@ use Illuminate\Support\Facades\Route;
 // [PostController::class, 'index'] Calling a method from a controller class
 Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('/home', [PostController::class, 'index']);
+
+
+Route::post('/posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
 
 // Posting Routes
 Route::get('/{post:slug}', [PostController::class, '_show']);
