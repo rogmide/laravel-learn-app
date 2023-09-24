@@ -6,13 +6,13 @@ namespace App\Services;
 class Newsletter
 {
 
-    public function subscribe($email, $list)
+    public function subscribe($email, $list = null)
     {
 
         // Null safe asigmen operator
         // $list ??= IF THIS I NULL THEN
         // set up the valor to what is on the right side of the =
-        $list ??= config(config('services.mailchimp.lists.subscribers'));
+        $list ??= config('services.mailchimp.lists.subscribers');
 
         return  $this->client()->lists->addListMember($list, [
             "email_address" => $email,

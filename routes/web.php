@@ -4,6 +4,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\PostCommentsController;
+use App\Http\Controllers\NewsLetterController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
@@ -79,19 +80,4 @@ Route::get('/authors/{author:username}', function (User $author) {
 });
 
 // API CALL
-Route::post('/newsletter/members', function (Newsletter $newsletter) {
-
-    request()->validate(['email' => 'required|email']);
-
-
-    try {
-        $newsletter->subscribe(request('email'));
-    } catch (\Throwable $th) {
-        //throw $th;
-        throw \Illuminate\Validation\ValidationException::withMessages(['email' => 'This email could not be added to our newsletter list.']);
-    }
-
-
-
-    return redirect('/')->with('success', 'You are now signed up for our newsletter!');
-});
+Route::post('/newsletter/members', [NewsLetterController::class, 'store']);
