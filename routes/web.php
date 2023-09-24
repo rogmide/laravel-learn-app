@@ -7,23 +7,8 @@ use App\Http\Controllers\PostCommentsController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use App\Services\Newsletter;
 use Illuminate\Support\Facades\Route;
-
-
-
-Route::get('ping', function () {
-
-    $mailchimp = new \MailchimpMarketing\ApiClient();
-
-    $mailchimp->setConfig([
-        'apiKey' => config('services.mailchimp.key'),
-        'server' => 'us9'
-    ]);
-
-    $response = $mailchimp->ping->get();
-    dd($response);
-});
-
 
 
 /*
@@ -91,4 +76,22 @@ Route::get('/authors/{author:username}', function (User $author) {
         'posts' => $author->posts->load(['category', 'author']),
         'categories' => Category::all()
     ]);
+});
+
+// API CALL
+Route::post('/newsletter/members', function (Newsletter $newsletter) {
+
+    request()->validate(['email' => 'required|email']);
+
+
+    try {
+        $newsletter->subscribe(request('email'));
+    } catch (\Throwable $th) {
+        //throw $th;
+        throw \Illuminate\Validation\ValidationException::withMessages(['email' => 'This email could not be added to our newsletter list.']);
+    }
+
+
+
+    return redirect('/')->with('success', 'You are now signed up for our newsletter!');
 });
