@@ -10,6 +10,22 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 
+
+Route::get('ping', function () {
+
+    $mailchimp = new \MailchimpMarketing\ApiClient();
+
+    $mailchimp->setConfig([
+        'apiKey' => config('services.mailchimp.key'),
+        'server' => 'us9'
+    ]);
+
+    $response = $mailchimp->ping->get();
+    dd($response);
+});
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
