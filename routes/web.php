@@ -80,4 +80,4 @@ Route::get('/authors/{author:username}', function (User $author) {
 });
 
 // API CALL
-Route::post('/newsletter/members', [NewsLetterController::class, 'store']);
+Route::post('/newsletter/members', NewsLetterController::class);
