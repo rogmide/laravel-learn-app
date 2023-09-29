@@ -44,7 +44,7 @@ class PostController extends Controller
                 ->orWhere('body', 'like', '%' . request('search') . '%');
         }
 
-        return $posts->paginate(6);
+        return $posts->paginate(9);
     }
 
     public function create()
@@ -75,7 +75,8 @@ class PostController extends Controller
 
         $attributes['user_id'] = auth()->id();
 
-        Post::created($attributes);
+        Post::create($attributes);
+        // Post::created($attributes);
 
         return redirect('/');
     }
