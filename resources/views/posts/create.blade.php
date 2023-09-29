@@ -2,7 +2,15 @@
     <section class="px-6 py-8">
 
         <x-panel class="max-w-sm mx-auto">
-            <form method="POST" action="/admin/posts/create">
+
+            <h1 class="font-bold">
+                Publish new Post
+            </h1>
+            {{-- 
+                enctype="multipart/form-data"
+             is for when we uploading a file
+              --}}
+            <form method="POST" action="/admin/posts/create" enctype="multipart/form-data">
 
                 {{-- Adding Security to the Form --}}
                 @csrf
@@ -41,6 +49,25 @@
                     {{-- Error Handeling End --}}
 
                 </div>
+                <div class="mb-6 mt-10">
+                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="thumbnail">
+                        Thumbnail
+                    </label>
+
+                    <input class="border border-gray-400 p-2 w-full" type="file" name="thumbnail" id="thumbnail"
+                        value="{{ old('thumbnail') }}" required>
+
+
+                    {{-- Error Handeling Start --}}
+                    @error('thumbnail')
+                        <p class="text-red-500 text-xs mt-1"> {{ $message }}</p>
+                    @enderror
+                    {{-- Error Handeling End --}}
+
+                </div>
+
+
+
                 <div class="mb-6 mt-10">
                     <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="excerpt">
                         Excerpt

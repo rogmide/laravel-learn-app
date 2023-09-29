@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('slug');
             $table->string('title');
+            $table->string('thumbnail')->nullable();
             $table->text('excerpt');
             $table->text('body');
             $table->timestamp('published_at')->nullable();
