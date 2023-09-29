@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use GuzzleHttp\Psr7\Response;
 
 class PostController extends Controller
 {
@@ -44,5 +45,20 @@ class PostController extends Controller
         }
 
         return $posts->paginate(6);
+    }
+
+    public function create()
+    {
+        // Route Protection sample START
+        // if (auth()->guest()) {
+        //     abort(403);
+        // }
+
+        // if (auth()->user()->username !== 'rogerdelgado') {
+        //     abort(403);
+        // }
+        // Route Protection sample END
+
+        return view('posts.create');
     }
 }

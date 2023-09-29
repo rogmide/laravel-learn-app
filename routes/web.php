@@ -79,5 +79,7 @@ Route::get('/authors/{author:username}', function (User $author) {
     ]);
 });
 
-// API CALL
+// API CALL USING MailChimp 
 Route::post('/newsletter/members', NewsLetterController::class);
+
+Route::get('admin/posts/create', [PostController::class, 'create'])->middleware('admin');
