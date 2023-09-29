@@ -83,3 +83,4 @@ Route::get('/authors/{author:username}', function (User $author) {
 Route::post('/newsletter/members', NewsLetterController::class);
 
 Route::get('admin/posts/create', [PostController::class, 'create'])->middleware('admin');
+Route::post('admin/posts/create', [PostController::class, 'store'])->middleware('admin');
