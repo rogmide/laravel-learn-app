@@ -24,12 +24,28 @@
             <div class="mt-8 md:mt-0 flex items-center">
                 {{-- Cheking if the User is log in --}}
                 @auth
-                    <a href="/home" class="text-xs font-bold uppercase ">Welcome {{ auth()->user()->name }}</a>
-                    <form method="POST" action="/reg/logout" class="text-xs ml-10 font-semibold text-blue-500">
-                        @csrf
+                    <x-dropdown>
+                        <x-slot name='trigger'>
+                            <button href="/home" class="text-xs font-bold uppercase ">
+                                Welcome, {{ auth()->user()->name }}
+                            </button>
+                        </x-slot>
+                        <x-dropdown-item href="/home" :active="request()->is('home')">Dashboard</x-dropdown-item>
+                        <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
 
-                        <button type="submit">Log Out</button>
-                    </form>
+                        <x-dropdown-item href="#" x-data="{}"
+                            @click.prevent="document.querySelector('#logout-form').submit()">
+                            Log out
+
+                            <form id="logout-form" method="POST" action="/reg/logout" class="hidden">
+                                @csrf
+
+                                <button type="submit">Log Out</button>
+                            </form>
+                        </x-dropdown-item>
+
+
+                    </x-dropdown>
                 @else
                     <a href="/reg/register" class="text-xs font-bold uppercase mr-3">Register</a>
                     <a href="/reg/login" class="text-xs font-bold uppercase mr-5">Login</a>
