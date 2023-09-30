@@ -54,8 +54,8 @@
                         Thumbnail
                     </label>
 
-                    <input class="border border-gray-400 p-2 w-full" type="file" name="thumbnail" id="thumbnail"
-                        value="{{ old('thumbnail') }}" required>
+                    <input class="border border-gray-400 p-2 w-full" type="text" name="thumbnail" id="thumbnail"
+                        value="{{ old('thumbnail') }}" placeholder="Imagen Link" required>
 
 
                     {{-- Error Handeling Start --}}
