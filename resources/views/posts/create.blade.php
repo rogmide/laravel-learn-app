@@ -17,84 +17,14 @@
                 {{-- Adding Security to the Form --}}
                 {{-- Without that will give static Code Error 419 --}}
 
-                <div class="mb-6 mt-10">
-                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="title">
-                        Title
-                    </label>
 
-                    <input class="border border-gray-400 p-2 w-full" type="text" name="title" id="title"
-                        value="{{ old('title') }}" required>
-
-
-                    {{-- Error Handeling Start --}}
-                    @error('title')
-                        <p class="text-red-500 text-xs mt-1"> {{ $message }}</p>
-                    @enderror
-                    {{-- Error Handeling End --}}
-
-                </div>
-                <div class="mb-6 mt-10">
-                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="slug">
-                        Slug
-                    </label>
-
-                    <input class="border border-gray-400 p-2 w-full" type="text" name="slug" id="slug"
-                        value="{{ old('slug') }}" required>
+                <x-form.input name='title' />
+                <x-form.input name='slug' />
+                <x-form.input name='thumbnail' />
+                <x-form.textarea name='excerpt' />
+                <x-form.textarea name='body' />
 
 
-                    {{-- Error Handeling Start --}}
-                    @error('slug')
-                        <p class="text-red-500 text-xs mt-1"> {{ $message }}</p>
-                    @enderror
-                    {{-- Error Handeling End --}}
-
-                </div>
-                <div class="mb-6 mt-10">
-                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="thumbnail">
-                        Thumbnail
-                    </label>
-
-                    <input class="border border-gray-400 p-2 w-full" type="text" name="thumbnail" id="thumbnail"
-                        value="{{ old('thumbnail') }}" placeholder="Imagen Link" required>
-
-
-                    {{-- Error Handeling Start --}}
-                    @error('thumbnail')
-                        <p class="text-red-500 text-xs mt-1"> {{ $message }}</p>
-                    @enderror
-                    {{-- Error Handeling End --}}
-
-                </div>
-
-
-
-                <div class="mb-6 mt-10">
-                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="excerpt">
-                        Excerpt
-                    </label>
-
-                    <textarea class="border border-gray-400 p-2 w-full" type="text" name="excerpt" id="excerpt" required>{{ old('excerpt') }}</textarea>
-
-
-                    {{-- Error Handeling Start --}}
-                    @error('excerpt')
-                        <p class="text-red-500 text-xs mt-1"> {{ $message }}</p>
-                    @enderror
-                    {{-- Error Handeling End --}}
-                </div>
-                <div class="mb-6 mt-10">
-                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="body">
-                        Body
-                    </label>
-
-                    <textarea class="border border-gray-400 p-2 w-full" type="text" name="body" id="body" required>{{ old('body') }}</textarea>
-
-                    {{-- Error Handeling Start --}}
-                    @error('body')
-                        <p class="text-red-500 text-xs mt-1"> {{ $message }}</p>
-                    @enderror
-                    {{-- Error Handeling End --}}
-                </div>
                 <div class="mb-6 mt-10">
                     <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="category_id">
                         Category
@@ -112,7 +42,7 @@
 
 
                     {{-- Error Handeling Start --}}
-                    @error('body')
+                    @error('category')
                         <p class="text-red-500 text-xs mt-1"> {{ $message }}</p>
                     @enderror
                     {{-- Error Handeling End --}}
