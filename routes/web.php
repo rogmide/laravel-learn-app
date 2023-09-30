@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\NewsLetterController;
+use App\Http\Controllers\AdminPostController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
@@ -84,3 +85,4 @@ Route::post('/newsletter/members', NewsLetterController::class);
 
 Route::get('admin/posts/create', [PostController::class, 'create'])->middleware('admin');
 Route::post('admin/posts/create', [PostController::class, 'store'])->middleware('admin');
+Route::get('admin/posts', [AdminPostController::class, 'index'])->middleware('admin');
