@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Validation\Rule;
-use Illuminate\Http\Request;
+
 
 class AdminPostController extends Controller
 {
@@ -44,5 +44,12 @@ class AdminPostController extends Controller
         return back()->with('success', 'Post Updated');
         // return view('posts.edit', ['post' => $post]);
 
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return back()->with('success', 'Post Deleted');
     }
 }

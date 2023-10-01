@@ -19,6 +19,18 @@
                                             <a href="/admin/posts/{{ $post->id }}/edit"
                                                 class="text-blue-500">Edit</a>
                                         </td>
+                                        <td class="whitespace-nowrap px-6 py-4">
+                                            {{-- Sending $post->id to backend
+                                                laravel magicly knows that what
+                                                we need a Post and using the id will retived
+                                                from DB --}}
+                                            <form action="/admin/posts/{{ $post->id }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button class="text-xs text-gray-400">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
