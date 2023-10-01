@@ -12,7 +12,12 @@
                                         <td class="whitespace-nowrap px-6 py-4">{{ $post->title }}</td>
                                         <td class="whitespace-nowrap px-6 py-4">Publish</td>
                                         <td class="whitespace-nowrap px-6 py-4 text-blue-500">
-                                            <a href="/admin/posts/{{ $post->id }}" class="text-blue-500">Edit</a>
+                                            {{-- Sending $post->id to backend
+                                                laravel magicly knows that what
+                                                we need a Post and using the id will retived
+                                                from DB --}}
+                                            <a href="/admin/posts/{{ $post->id }}/edit"
+                                                class="text-blue-500">Edit</a>
                                         </td>
                                     </tr>
                                 @endforeach
