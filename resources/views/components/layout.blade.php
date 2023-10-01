@@ -30,8 +30,14 @@
                                 Welcome, {{ auth()->user()->name }}
                             </button>
                         </x-slot>
-                        <x-dropdown-item href="/admin/posts" :active="request()->is('admin/posts')">All Post</x-dropdown-item>
-                        <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
+                        {{-- Basacly the next line is the same as 
+                            LINE 36 to 39 --}}
+                        {{-- @if (auth()->user()->can('admin')) --}}
+                        @can('admin')
+                            <x-dropdown-item href="/admin/posts" :active="request()->is('admin/posts')">All Post</x-dropdown-item>
+                            <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
+                        @endcan
+                        {{-- @endif --}}
 
                         <x-dropdown-item href="#" x-data="{}"
                             @click.prevent="document.querySelector('#logout-form').submit()">

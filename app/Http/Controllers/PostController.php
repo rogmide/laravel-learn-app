@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
+
 
 class PostController extends Controller
 {
@@ -16,6 +18,16 @@ class PostController extends Controller
 
     public function index()
     {
+
+        // WAYS FOR USERS RESTRICTION
+        // dd(Gate::allows('admin'));
+
+        // can and cannot method allways return a bool
+        // request()->user()->can('admin');
+        // request()->user()->cannot('admin');
+
+        // This is the best way so far
+        // $this->authorize('admin');
 
         return view('posts', [
             // this is basaclly a query to DB Order By last, give me with the caregory and the authors
